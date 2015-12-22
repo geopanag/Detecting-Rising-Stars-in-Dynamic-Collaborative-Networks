@@ -33,15 +33,15 @@ public class CrawlColabFilterPartialIdentified {
         Connection connection = DriverManager.getConnection(connectionURL);
         Statement papersQuery = connection.createStatement();
         Statement papers = connection.createStatement();
-        Statement nodes = connection.createStatement();
+        Statement authors = connection.createStatement();
         ResultSet rspapers = null;
-        ResultSet rsnodes = null;
+        ResultSet rsauthors = null;
         ResultSet rsbig = null;
-        rsnodes = nodes.executeQuery("SELECT * FROM nodes");
+        rsauthors = authors.executeQuery("SELECT * FROM authors");
         Map<String, String> map = new HashMap<String, String>();
         Set<String> skip = new HashSet<String>();
-        while (rsnodes.next()) {
-            map.put(rsnodes.getString("id"), rsnodes.getString("author").split("---")[0]);
+        while (rsauthors.next()) {
+            map.put(rsauthors.getString("id"), rsauthors.getString("author").split("---")[0]);
         }
         //pare ta arthra pou den exoun id oi author tous
         rspapers = papersQuery.executeQuery("SELECT *FROM `papers` WHERE authors like '%!%'");
@@ -118,7 +118,7 @@ public class CrawlColabFilterPartialIdentified {
                     }
                     if (!map.containsKey(eklektos.getId())) {
                         try {
-                            nodes.executeUpdate("INSERT INTO `nodes`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + kena.get(i) + "---" + eklektos.getName() + "\",\"" + eklektos.getId() + "\",\"" + eklektos.getAffiliation() + "\",\"" + eklektos.getField() + "\",\"" + eklektos.getCity() + "\")");
+                            authors.executeUpdate("INSERT INTO `authors`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + kena.get(i) + "---" + eklektos.getName() + "\",\"" + eklektos.getId() + "\",\"" + eklektos.getAffiliation() + "\",\"" + eklektos.getField() + "\",\"" + eklektos.getCity() + "\")");
                             map.put(eklektos.getId(), kena.get(i));
                         } catch (Exception exc) {
                             System.out.println(kena.get(i) + " out of the databas");

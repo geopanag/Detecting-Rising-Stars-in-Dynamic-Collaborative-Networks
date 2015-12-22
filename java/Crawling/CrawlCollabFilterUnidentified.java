@@ -33,15 +33,15 @@ public class CrawlCollabFilterUnidentified {
         Connection connection = DriverManager.getConnection(connectionURL);
         Statement papersQuery = connection.createStatement();
         Statement papers = connection.createStatement();
-        Statement nodes = connection.createStatement();
+        Statement authors = connection.createStatement();
         ResultSet rspapers = null;
-        ResultSet rsnodes = null;
+        ResultSet rsauthors = null;
         ResultSet rsbig = null;
-        rsnodes = nodes.executeQuery("SELECT * FROM nodes");
+        rsauthors = authors.executeQuery("SELECT * FROM authors");
         Map<String, String> map = new HashMap<String, String>();
         Set<String> skip = new HashSet<String>();
-        while (rsnodes.next()) {
-            map.put(rsnodes.getString("id"), rsnodes.getString("author").split("---")[0]);
+        while (rsauthors.next()) {
+            map.put(rsauthors.getString("id"), rsauthors.getString("author").split("---")[0]);
         }
         //papers with unidentified authors
         rspapers = papersQuery.executeQuery("SELECT *FROM `papers` WHERE authors not REGEXP '[0-9]' and authors!=''");
@@ -98,7 +98,7 @@ public class CrawlCollabFilterUnidentified {
                     if (A != null) {
                         if (!map.containsKey(A.getId())) {
                             try {
-                                nodes.executeUpdate("INSERT INTO `nodes`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + kena.get(j) + "---" + A.getName() + "\",\"" + A.getId() + "\",\"" + A.getAffiliation() + "\",\"" + A.getField() + "\",\"" + A.getCity() + "\")");
+                                authors.executeUpdate("INSERT INTO `authors`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + kena.get(j) + "---" + A.getName() + "\",\"" + A.getId() + "\",\"" + A.getAffiliation() + "\",\"" + A.getField() + "\",\"" + A.getCity() + "\")");
                                 map.put(A.getId(), kena.get(j));
                             } catch (Exception exc) {
                                 System.out.println(kena.get(j) + " not in the database");
@@ -156,7 +156,7 @@ public class CrawlCollabFilterUnidentified {
                         }
                         if (!map.containsKey(eklektos.getId())) {
                             try {
-                                nodes.executeUpdate("INSERT INTO `nodes`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + kena.get(j) + "---" + eklektos.getName() + "\",\"" + eklektos.getId() + "\",\"" + eklektos.getAffiliation() + "\",\"" + eklektos.getField() + "\",\"" + eklektos.getCity() + "\")");
+                                authors.executeUpdate("INSERT INTO `authors`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + kena.get(j) + "---" + eklektos.getName() + "\",\"" + eklektos.getId() + "\",\"" + eklektos.getAffiliation() + "\",\"" + eklektos.getField() + "\",\"" + eklektos.getCity() + "\")");
                                 map.put(eklektos.getId(), kena.get(j));
                             } catch (Exception exc) {
                                 System.out.println(kena.get(j) + " not in the database");

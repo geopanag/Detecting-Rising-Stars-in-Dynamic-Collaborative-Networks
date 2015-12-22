@@ -42,16 +42,16 @@ public class Multigraphs {
         String connectionURL = "";
         Connection connection = DriverManager.getConnection(connectionURL);
         Statement ola = connection.createStatement();//CrawledPapwers
-        Statement nodes = connection.createStatement();
+        Statement authors = connection.createStatement();
         ResultSet rsola = null;
-        ResultSet rsnodes = null;
+        ResultSet rsauthors = null;
         Set<String> authors = new HashSet<String>();
         Set<String> miss = new HashSet<String>();
         //o sunergatikos grafos
         //UndirectedGraph g = new UndirectedSparseGraph();
-        rsnodes = nodes.executeQuery("SELECT id FROM `nodes`");
-        while (rsnodes.next()) {
-            authors.add(rsnodes.getString("id"));
+        rsauthors = authors.executeQuery("SELECT id FROM `authors`");
+        while (rsauthors.next()) {
+            authors.add(rsauthors.getString("id"));
 
         }
     

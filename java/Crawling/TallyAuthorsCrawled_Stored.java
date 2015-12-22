@@ -34,19 +34,19 @@ public class TallyAuthorsCrawled_Stored {
         Statement ola = connection.createStatement();
         Statement olaUpdate = connection.createStatement();
         Statement big = connection.createStatement();
-        Statement nodes = connection.createStatement();
+        Statement authors = connection.createStatement();
         
         ResultSet rsola = null;
-        ResultSet rsnodes = null;
+        ResultSet rsauthors = null;
         ResultSet rsbig = null;
-        rsnodes = nodes.executeQuery("SELECT * FROM nodes");
+        rsauthors = authors.executeQuery("SELECT * FROM authors");
         Map<String, Author> map = new HashMap<String, Author>();
         ArrayList<String> Names = new ArrayList();
         ArrayList<String> Ids = new ArrayList();
-        while (rsnodes.next()) {
-            map.put(rsnodes.getString("id"), new Author(rsnodes.getString("author"), rsnodes.getString("id"), rsnodes.getString("affiliation"), rsnodes.getString("field"), rsnodes.getString("city"), "", false));
-            Names.add(rsnodes.getString("author").split("---")[0]);
-            Ids.add(rsnodes.getString("id"));
+        while (rsauthors.next()) {
+            map.put(rsauthors.getString("id"), new Author(rsauthors.getString("author"), rsauthors.getString("id"), rsauthors.getString("affiliation"), rsauthors.getString("field"), rsauthors.getString("city"), "", false));
+            Names.add(rsauthors.getString("author").split("---")[0]);
+            Ids.add(rsauthors.getString("id"));
         }
         rsola = ola.executeQuery("SELECT *FROM ola where done=0 and more=1");///first  more=0 than more=1
         Set<String> skip = new HashSet<String>();
@@ -89,7 +89,7 @@ public class TallyAuthorsCrawled_Stored {
                         paper.put(au.getName(), au.getId());
                         System.out.println("id " + au.getId() + " author " + au.getName());
                         try {
-                            nodes.executeUpdate("INSERT INTO `nodes`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + au.getName() + "\",\"" + au.getId() + "\",\"" + au.getAffiliation() + "\",\"" + au.getField() + "\",\"" + au.getCity() + "\")");
+                            authors.executeUpdate("INSERT INTO `authors`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + au.getName() + "\",\"" + au.getId() + "\",\"" + au.getAffiliation() + "\",\"" + au.getField() + "\",\"" + au.getCity() + "\")");
                         } catch (Exception exc) {
                           }
                     }
@@ -153,7 +153,7 @@ public class TallyAuthorsCrawled_Stored {
                                 }
                                 if (!map.containsKey(temp.get(0))) {
                                     try {
-                                        nodes.executeUpdate("INSERT INTO `nodes`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + authBig[i] + "\",\"" + temp.get(0) + "\",\"" + temp.get(2) + "\",\"" + temp.get(1) + "\",\"" + city + "\")");
+                                        authors.executeUpdate("INSERT INTO `authors`(`author`,`id`,`affiliation`,`field`,`city`) VALUES (\"" + authBig[i] + "\",\"" + temp.get(0) + "\",\"" + temp.get(2) + "\",\"" + temp.get(1) + "\",\"" + city + "\")");
                                         map.put(temp.get(0), new Author(authBig[i], temp.get(0), temp.get(2), temp.get(1), city, "", false));
                                     } catch (Exception exc) {
                                         System.out.println(authBig[i] + " not in the database " +exc.getMessage());

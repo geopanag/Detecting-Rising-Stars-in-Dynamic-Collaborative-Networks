@@ -21,11 +21,11 @@ q=matrix(0,7,f)
 for(x in 1:7){
   for(i in 1:ncol(cent)){
     if(cent[x,i]>high[i]){
-      print(paste("megalo",names(cent)[i]))
+      print(paste("high",names(cent)[i]))
       q[x,i]=cent[x,i]
     }
     if(cent[x,i]<low[i]){
-      print(paste("mikro",names(cent)[i]))
+      print(paste("low",names(cent)[i]))
       q[x,i]=cent[x,i]
     }
   }

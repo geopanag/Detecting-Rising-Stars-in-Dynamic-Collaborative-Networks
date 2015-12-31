@@ -53,7 +53,7 @@ for(year in 2006:2013){
 
 plotClusterMetrics <- function(metric,name) {
   
-  pdf(paste(name,".pdf",sep=""))
+  pdf(paste(paste("figures/",name,sep=""),".pdf",sep=""))
   
   par(mar=c(5.1, 4.1, 4.1, 8.1))
   

@@ -1,4 +1,4 @@
-setwd("/data/finals")
+setwd("C:/Users/Giwrgos/hua/ptuxiakh/data/finals")
 
 library(clusterSim)
 
@@ -9,7 +9,7 @@ cls=data.frame(matrix(nrow=98,ncol=5))
 names(cls)=c("number","avg(within groups sum of squares)","avg(distance between cluster centroids)","avg(db)","avg(dunn)")
 for(p in 3:100){
   print(p)
-  kClust=kmeans(data,centers=p) ##kmeans clustering with different numbe rof clusters
+  kClust=kmeans(data,centers=p) ##kmeans clustering with different number of clusters
   wgss=c()
   for(i in 1:length(kClust$withinss)){
     wgss=c(wgss,kClust$withinss[i]/kClust$size[i])##normalized within group sum of squares
@@ -36,9 +36,15 @@ for(p in 3:100){
   cls[p-2,4]=index.DB(data,kClust$cluster,centrotypes="centroids",p=2)$DB ##Davies-Bouldin
   cls[p-2,5]=min(dun)/max(wgss)##minimum(intercluster)/maximum(intracluster)
 }
-write(cls,"kmeans100.csv")
 
 
+plot(cls[,1],cls[,2]*cls[,4]/max(cls[,2]*cls[,4]),col='blue',pch=19,xaxt='n',ylab="WCSS*DaviesBouldin",xlab="Number of clusters")
+lines(cls[,1],cls[,2]*cls[,4]/max(cls[,2]*cls[,4]),col='blue')
+axis(side=1,at=1:100,labels=seq(1:100),cex.axis=0.8)
+
+plot(cls[,1],cls[,3]*cls[,5]/max(cls[,3]*cls[,5]),col='red',pch=19,xaxt='n',ylab="DBCC*Dunn",xlab="Number of clusters")
+lines(cls[,1],cls[,3]*cls[,5]/max(cls[,3]*cls[,5]),col='red')
+axis(side=1,at=1:100,labels=seq(1:100),cex.axis=0.8)
 
 
 

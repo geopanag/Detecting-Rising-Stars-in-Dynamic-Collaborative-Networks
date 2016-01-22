@@ -1,6 +1,5 @@
 setwd("/data/finals")
 
-#data=read.csv("aggregated.csv")
 data=read.csv("final.csv")
 lab=data[,1]
 data=data[,-1]

@@ -1,0 +1,66 @@
+ID,Meaning
+1,Minimum Change of Cumulative Productivity
+2,Maximum Change of Cumulative Productivity
+3,Last Change of Cumulative Productivity
+4,Sum of Changes of Cumulative Productivity
+5,Average Cumulative Productivity
+6,Minimum Change of Weighted Cumulative Productivity
+7,Maximum Change of Weighted Cumulative Productivity
+8,Last Change of Weighted Cumulative Productivity
+9,Sum of Changes of Weighted Cumulative Productivity
+10,Average Weighted Cumulative Productivity
+11,Minimum Change of Current Productivity
+12,Maximum Change of Current Productivity
+13,Last Change of Current Productivity
+14,Sum of Changes of Current Productivity
+15,Average Current Productivity
+16,Minimum Change of Cumulative Citations
+17,Maximum Change of Cumulative Citations
+18,Last Change of Cumulative Citations
+19,Sum of Changes of Cumulative Citations
+20,Average Cumulative Citations
+21,Minimum Change of Weighted Cumulative Citations
+22,Maximum Change of Weighted Cumulative Citations
+23,Last Change of Weighted Cumulative Citations
+24,Sum of Changes of Weighted Cumulative Citations
+25,Average Weighted Cumulative Citations
+26,Minimum Change of Current Citations
+27,Maximum Change of Current Citations
+28,Last Change of Current Citations
+29,Sum of Changes of Current Citations
+30,Average Current Citations
+31,Minimum Change of Centrality
+32,Maximum Change of Centrality
+33,Last Change of Centrality
+34,Sum of Changes of Centrality
+35,Average Centrality
+36,Minimum Change of Sociability
+37,Maximum Change of Sociability
+38,Last Change of Sociability
+39,Sum of Changes of Sociability
+40,Average Sociability
+41,Minimum Change of Collaborations' Impact
+42,Maximum Change of Collaborations' Impact
+43,Last Change of Collaborations' Impact
+44,Sum of Changes of Collaborations' Impact
+45,Average Collaborations' Impact
+46,Minimum Change of Clique's Impact
+47,Maximum Change of Clique's Impact
+48,Last Change of Clique's Impact
+49,Sum of Changes of Clique's Impact
+50,Average Clique's Impact
+51,Minimum Change of Extended Clique's Impact
+52,Maximum Change of Extended Clique's Impact
+53,Last Change of Extended Clique's Impact
+54,Sum of Change of Extended Clique's Impact
+55,Average Change of Extended Clique's Impact
+56,Minimum Change of Clique's Quantity
+57,Maximum Change of Clique's Quantity
+58,Last Change of Clique's Quantity
+59,Sum of Changes of Clique's Quantity
+60,Average Clique's Quantity
+61,Minimum Change of Extended Clique's Quantity
+62,Maximum Change of Extended Clique's Quantity
+63,Last Change of Extended Clique's Quantity
+64,Sum of Changes of Extended Clique's Quantity
+65,Average Extended Clique's Quantity

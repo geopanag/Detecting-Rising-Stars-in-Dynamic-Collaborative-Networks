@@ -2,26 +2,16 @@ setwd("/data/finals")
 data=read.csv("aggregated.csv")
 lab=data[,1]
 data=data[,-1]
+name=names(data)
+data = data.frame(sapply(data,as.numeric))
+names(data) = name
 
-for(i in 1:ncol(data)){
-  data[,i]=as.numeric(data[,i])
-}
-
-
-library(svd)
 sing=svd(scale(data))
-plot(sing$d^2/sum(sing$d^2),pch=19,col='blue',ylab="Singular Value",xlab="SVD column",main="percentage of deviation depicted")
+plot(sing$d^2/sum(sing$d^2),pch=19,col='blue',ylab="Singular Value",xlab="SVD column")
 
-for (i in 1:4){
-  plot(sing$v[,4],xlab="", ylab="Singular Value",pch=19,cex=0.5,col="blue")
-  title(i)
-}
+features_contribution = apply(abs(sing$v[,1:4]),1,sum)
 
-l=c()
-for(i in 1:nrow(sing$v)){###for every feature
-  l=c(l,sum(abs(sing$v[i,1:4])))###count its right singular vector value
-}
+features_contribution = sort(features_contribution,decreasing=T,index.return=TRUE)
 
-plot(1:13,l,xlab="",ylab="contribution in variance",xaxt="n",col="blue",pch=19,main="variance contribution per feature")
-axis(side=1,at=1:13,labels=names(data),cex.axis=0.8,las=2)
-print(names(data)[which(l==max(l))]) ##the most influential feature
+plot(1:13,features_contribution$x,xlab="Feature",ylab="Contribution in variance",xaxt="n",col="blue",pch=19)
+axis(side=1,at=1:13,labels=features_contribution$ix,cex.axis=1,las=1)

@@ -1,9 +1,9 @@
-setwd("C:/Users/Giwrgos/hua/ptuxiakh/data/finals")
+setwd("/data/finals")
 
 library(clusterSim)
 
 data=read.csv("final.csv")
-lab=data[,1]
+ids=data[,1]
 data=data[,-1]
 cls=data.frame(matrix(nrow=98,ncol=5))
 names(cls)=c("number","avg(within groups sum of squares)","avg(distance between cluster centroids)","avg(db)","avg(dunn)")
@@ -46,6 +46,8 @@ plot(cls[,1],cls[,3]*cls[,5]/max(cls[,3]*cls[,5]),col='red',pch=19,xaxt='n',ylab
 lines(cls[,1],cls[,3]*cls[,5]/max(cls[,3]*cls[,5]),col='red')
 axis(side=1,at=1:100,labels=seq(1:100),cex.axis=0.8)
 
-
+#7 is the optimum
+kClust=kmeans(data,centers=7)
+write.csv(cbind(ids,kClust$cluster),"author_clusters.csv",row.names=F)
 
 

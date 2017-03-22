@@ -1,4 +1,3 @@
 Detecting Rising Stars in Dynamic Collaborative Networks
 
-The java, R and SQL code for my thesis in Harokopio University of Athens.
-The data is not yet available online.
+The java, R and SQL code for the publication http://www.sciencedirect.com/science/article/pii/S1751157716300645.

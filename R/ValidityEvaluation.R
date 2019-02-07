@@ -1,5 +1,7 @@
 setwd("/data/evaluation/validity")
 
+library(fmsb)
+
 data=data.frame(matrix(ncol=20,nrow=0))
 x=read.csv("validity1.csv",header=TRUE,sep=",")
 names(data)=names(x)
@@ -10,10 +12,7 @@ for(i in 2:7){
 }
 write.csv(data,"validity.csv",row.names=FALSE)
 
-library(fmsb)
-
 val=read.csv("validity.csv")
-
 
 #penalized productivity
 toPlot=val[,1:5]

@@ -1,10 +1,10 @@
 setwd("")
+library(hash)
 
 data=read.csv("/data/yearly graphs and datasets/2005/dynamic_indices2005.csv")
 data[,1]=as.character(data[,1])
 
 trends=read.csv("trends.csv",head=FALSE)
-library(hash)
 ##keep the index of every author, to avoid greping the datasets
 hp=hash(keys=trends[,1],values=trends[,2])
 hc=hash(keys=trends[,1],values=trends[,3])

@@ -5,24 +5,24 @@ Code to reproduce the results of  [Detecting Rising Stars in Dynamic Collaborati
 ## Requirements
 ### Java
 
-jung
-htmlparser
-httpclient
-htlmcleaner
-jsoup-1.7.2
-guava-18.0
-commons-lang3-3.3.2
-commons-math3-3.5
-mysql-connector-java-5.1.22
-OogNew.jar (powergraph)
-externalsortinginjava-0.1.9.jar (to sort the multi edge graphs)
+jung <br>
+htmlparser <br>
+httpclient <br>
+htlmcleaner <br>
+jsoup-1.7.2 <br>
+guava-18.0 <br>
+commons-lang3-3.3.2 <br>
+commons-math3-3.5 <br>
+mysql-connector-java-5.1.22 <br> 
+OogNew.jar (powergraph)<br>
+externalsortinginjava-0.1.9.jar (to sort the multi edge graphs)<br>
 
 
 ### R
-igraph
-shiny
-fpc
-dtw
-fmsb
-hash
-clusterSim
+igraph <br>
+shiny <br>
+fpc<br>
+dtw <br>
+fmsb <br>
+hash <br>
+clusterSim <br>
